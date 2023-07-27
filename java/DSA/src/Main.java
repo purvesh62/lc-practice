@@ -1,13 +1,13 @@
 import linkedlist.LinkedList;
+import doublyLinkedList.DoublyLinkedList;
 
 public class Main {
     public static void main(String[] args) {
-        LinkedList myLinkedList = new LinkedList(1);
-        myLinkedList.append(2);
-        myLinkedList.append(3);
-        myLinkedList.append(4);
-        myLinkedList.append(5);
-        myLinkedList.append(6);
-        System.out.println(myLinkedList.findMiddleNode().value);
+        DoublyLinkedList list = new DoublyLinkedList(1);
+        list.append(2);
+        list.append(3);
+        list.remove(1);
+        list.insert(2, 4);
+        list.printList();
     }
 }

@@ -242,4 +242,116 @@ public class LinkedList {
         }
         return t1;
     }
+
+
+    public Node findKthFromEnd(int k) {
+        Node fast = head;
+        Node slow = head;
+
+        for (int i = 0; i < k; i++) {
+            if (fast == null) {
+                return null;
+            }
+            fast = fast.next;
+        }
+
+        while (fast != null) {
+            slow = slow.next;
+            fast = fast.next;
+        }
+
+        return slow;
+    }
+
+    public void reverseBetween(int m, int n) {
+        // If the list is empty, there's nothing to reverse,
+        // so we exit from the function immediately
+        if (head == null) return;
+
+        // Create a dummy node, a common trick used in linked
+        // list problems to simplify the edge cases.
+        // This node doesn't hold any meaningful data.
+        Node dummy = new Node(0);
+        // The next node of the dummy node is set to the head,
+        // making dummy a pseudo-head of the list.
+        dummy.next = head;
+        // Initialize 'prev' as the dummy node. 'prev' will
+        // keep track of the node right before the segment
+        // to be reversed.
+        Node prev = dummy;
+
+        // Move 'prev' m steps forward in the list to make it
+        // point to the node right before the segment to be reversed
+        for (int i = 0; i < m; i++) {
+            prev = prev.next;
+        }
+
+        // 'current' will point to the first node of the segment
+        // that is to be reversed.
+        Node current = prev.next;
+        // This loop will reverse the segment. It runs for
+        // n - m times as that's the length of the segment.
+        for (int i = 0; i < n - m; i++) {
+            // 'temp' is the node right after 'current' that
+            // will be moved to the front of the segment.
+            Node temp = current.next;
+            // Link 'current' to the node after 'temp'
+            // effectively removing 'temp' from the segment.
+            current.next = temp.next;
+            // The next node of 'temp' is the node currently at
+            // the front of the segment, so 'temp' is placed
+            // right at the start of the segment.
+            temp.next = prev.next;
+            // Now, 'temp' becomes the first node of the reversed
+            // segment by setting the next of 'prev' to 'temp'.
+            prev.next = temp;
+        }
+
+        // After the loop, the segment is reversed but the head
+        // of the list is still pointing to the dummy node.
+        // So, update the head to point to the actual first node.
+        head = dummy.next;
+    }
+
+
+    public void partitionList(int x) {
+        // Return if the list is empty
+        if (head == null) return;
+
+        // Create two dummy nodes for the new lists
+        Node dummy1 = new Node(0);
+        Node dummy2 = new Node(0);
+
+        // Initialize pointers for the new lists
+        Node prev1 = dummy1;
+        Node prev2 = dummy2;
+
+        // Start iterating from the head
+        Node current = head;
+
+        // Iterate through the linked list
+        while (current != null) {
+            // Add nodes to the new lists
+            // based on their value
+            if (current.value < x) {
+                prev1.next = current;
+                prev1 = current;
+            } else {
+                prev2.next = current;
+                prev2 = current;
+            }
+
+            // Move to the next node
+            current = current.next;
+        }
+
+        // Mark the end of the second list
+        prev2.next = null;
+
+        // Connect the two new lists
+        prev1.next = dummy2.next;
+
+        // Update the head of the list
+        head = dummy1.next;
+    }
 }
