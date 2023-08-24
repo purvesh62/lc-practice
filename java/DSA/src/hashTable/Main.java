@@ -10,6 +10,8 @@ public class Main {
         myHashTable.set("Hola", 13);
         myHashTable.set("Arigato", 11);
         System.out.println(myHashTable.get("Hola"));
+        System.out.println(myHashTable.get("as"));
         myHashTable.printTable();
+        System.out.println(myHashTable.keys());
     }
 }
