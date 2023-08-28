@@ -1,11 +1,11 @@
 package dataStructures.linkedlist;
 
 public class LinkedList {
-    private Node head = null;
+    public Node head = null;
 
-    private Node tail = null;
+    public Node tail = null;
 
-    private int length = 0;
+    public int length = 0;
 
     // Constructor
     public LinkedList(int value) {
