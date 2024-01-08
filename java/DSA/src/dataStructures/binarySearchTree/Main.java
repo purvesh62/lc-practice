@@ -2,7 +2,7 @@ package dataStructures.binarySearchTree;
 
 public class Main {
     public static void main(String[] args) {
-        BinarySearchTree bst = new BinarySearchTree();
+        BinarySearchTree bst = new BinarySearchTree(50);
 
         bst.insert(47);
         bst.insert(21);
@@ -13,6 +13,5 @@ public class Main {
         bst.insert(27);
         System.out.println(bst.contains(27));
         System.out.println(bst.contains(99));
-        System.out.println(bst.root.left.right.value);
     }
 }

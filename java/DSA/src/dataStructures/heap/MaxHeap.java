@@ -49,6 +49,7 @@ public class MaxHeap {
     private void sinkDown(int index) {
         int maxIndex = index;
         while (true) {
+            System.out.println("MaxIndex: " + maxIndex);
             int leftIndex = leftChild(index);
             int rightIndex = rightChild(index);
 
@@ -63,6 +64,7 @@ public class MaxHeap {
             if (maxIndex != index) {
                 swap(index, maxIndex);
                 index = maxIndex;
+                System.out.println(heap);
             } else {
                 return;
             }
@@ -81,6 +83,7 @@ public class MaxHeap {
 
         int maxValue = heap.get(0);
         heap.set(0, heap.remove(heap.size() - 1));
+        System.out.println(heap);
         sinkDown(0);
         return maxValue;
     }

@@ -12,12 +12,17 @@ public class BinarySearchTree {
     }
 
     public boolean insert(int value) {
+        // Create a new node
         Node newNode = new Node(value);
+
+        // Assign newNode as root if no node exists
         if (root == null) {
             root = newNode;
             return true;
         }
+
         Node temp = root;
+
         while (true) {
             if (newNode.value == temp.value) {
                 return false;
